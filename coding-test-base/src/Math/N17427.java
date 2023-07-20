@@ -7,15 +7,17 @@ public class N17427 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        /*
-         * f(1) = 1
-         * f(2) = 1 + 2 = 3
-         * f(3) = 1 + 3 = 4
-         * f(4) = 1 + 2 + 4 = 7
-         * f(5) = 1 + 5 = 6
-         * f(6) = 1 + 2 + 3 + 6 = 11
-         * root(n)*n
-         */
+        long[] sieve = new long[n + 1];
+        long answer = 1;
+        for (int i = 0; i <= n; i++)
+            sieve[i] = 1;
+        sieve[0] = 0;
+        for (int i = 2; i <= n; i++) {
+            for (int j = i; j <= n; j += i) {
+                sieve[j] += (long) i;
+            }
+            answer += sieve[i];
+        }
+        System.out.println(answer);
     }
-    
 }
