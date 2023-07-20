@@ -21,3 +21,11 @@ public class N17427 {
         System.out.println(answer);
     }
 }
+
+/*
+ * 자연수 K의 배수는 항상 K를 약수로 가진다는 점을 이용헤 O(N)으로도 풀 수 있다.
+ * long answer = 0;
+ * for (int i = 1; i <= N; i++) {
+ *     answer += (N / i) * i;
+ * }
+ */
