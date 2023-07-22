@@ -14,12 +14,12 @@ public class N17425 {
         for (int i = 0; i <= MAX_VALUE; i++)
             sieve[i] = 1;
         answer[1] = 1;
-            for (int i = 2; i <= MAX_VALUE; i++) {
-                for (int j = i; j <= MAX_VALUE; j += i) {
-                    sieve[j] += (long) i;
-                }
-                answer[i] = answer[i-1] + sieve[i];
+        for (int i = 2; i <= MAX_VALUE; i++) {
+            for (int j = i; j <= MAX_VALUE; j += i) {
+                sieve[j] += (long) i;
             }
+            answer[i] = answer[i-1] + sieve[i];
+        }
         for (int i = 0; i < T; i++) {
             int n = Integer.parseInt(br.readLine());
             sb.append(answer[n]).append('\n');
