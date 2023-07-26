@@ -23,19 +23,24 @@ public class N6064 {
             int N = Integer.parseInt(st.nextToken());
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
-            int k = y;
+            int k = Math.min(x, y);
             int X = k;
             int Y = k;
+            int lcmOfMandN = lcm(Math.max(M, N), Math.min(M, N));
             if (x <= y) {
-                for (int j = 0; j < lcm(Math.max(M, N), Math.min(M, N)) / M; j++) {
+                for (int j = 0; j < lcmOfMandN / M; j++) {
                     if (Y == y) break;
-                    Y = (Y + M) % N > 0 ? (Y + M) % N : N;
+                    Y = (Y + M) % N;
+                    if (Y == 0)
+                        Y = N;
                     k += M;
                 }
             } else {
-               for (int j = 0; j < lcm(Math.max(M, N), Math.min(M, N)) / N; j++) {
+               for (int j = 0; j < lcmOfMandN / N; j++) {
                     if (X == x) break;
-                    X = (X + N) % M > 0 ? (X + N) % M : M;
+                    X = (X + N) % M;
+                    if (X == 0)
+                        X = M;
                     k += N;
                 }
             }
