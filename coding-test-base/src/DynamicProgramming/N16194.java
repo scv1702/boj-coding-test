@@ -3,7 +3,7 @@ package DynamicProgramming;
 import java.io.*;
 import java.util.*;
 
-public class N11052 {
+public class N16194 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
@@ -15,7 +15,7 @@ public class N11052 {
         }
         dp[1] = prices[1];
         for (int i = 2; i <= N; i++) {
-            dp[i] = Math.max(prices[i], Math.max(dp[i-1] + dp[1], ));
+            dp[i] = Math.min(prices[i], Math.min(dp[i-1] + prices[1], );
         }
         System.out.println(Arrays.toString(dp));
         System.out.println(dp[N]);
