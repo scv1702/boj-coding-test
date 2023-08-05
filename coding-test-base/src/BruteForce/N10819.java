@@ -3,7 +3,7 @@ package BruteForce;
 import java.io.*;
 import java.util.*;
 
-public class N10189 {
+public class N10819 {
     static int N;
     static int answer = Integer.MIN_VALUE;
     static boolean[] visited;
