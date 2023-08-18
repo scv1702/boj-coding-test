@@ -6,27 +6,24 @@ import java.util.*;
 public class N1707 {
     static StringBuilder sb = new StringBuilder();
     static List<List<Integer>> graph;
-    static boolean[] visited;
+    static int[] visited;
     static boolean answer;
-    static Set<Integer> red;
-    static Set<Integer> black;
     static int V;
     static int E;
+    final static int RED = 1;
+    final static int BLACK = 2;
 
-    public static void dfs(int u, boolean color) {
-        visited[u] = true;
-        if (color) red.add(u);
-        else black.add(u);
+    public static void dfs(int u, int color) {
+        visited[u] = color;
         for (int i = 0; i < graph.get(u).size(); i++) {
             int v = graph.get(u).get(i);
-            if (color && red.contains(v) || !color && black.contains(v)) {
+            if (visited[v] == color) {
                 answer = false;
                 return ;
             }
-            if (color) black.add(v);
-            else red.add(v);
-            if (!visited[v]) {
-                dfs(v, !color);
+            if (visited[v] == 0) {
+                if (color == RED) dfs(v, BLACK);
+                else dfs(v, RED);
             }
         }
     }
@@ -38,7 +35,7 @@ public class N1707 {
             StringTokenizer st = new StringTokenizer(br.readLine());
             V = Integer.parseInt(st.nextToken());
             E = Integer.parseInt(st.nextToken());
-            visited = new boolean[V];
+            visited = new int[V];
             graph = new ArrayList<>();
             answer = true;
             for (int j = 0; j < V; j++) {
@@ -51,11 +48,9 @@ public class N1707 {
                 graph.get(u).add(v);
                 graph.get(v).add(u);
             }
-            red = new HashSet<>();
-            black =  new HashSet<>();
             for (int j = 0; j < V; j++) {
-                if (!visited[j]) 
-                    dfs(j, true);
+                if (visited[j] == 0) 
+                    dfs(j, RED);
                 if (!answer) break;
             }
             if (answer) sb.append("YES\n");
