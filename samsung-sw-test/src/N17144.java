@@ -5,15 +5,15 @@ public class N17144 {
     static class AirCleaner {
         Pair up;
         Pair down;
-
+        
         public AirCleaner(Pair up, Pair down) {
-            this.up = up; this.down = down;
+            this.up = up; 
+            this.down = down;
         }
 
         public void clean(int[][] room) {
             int R = room.length;
             int C = room[0].length;
-
             // up
             for (int i = up.i-1; i > 0; i--) {
                 if (room[i][up.j] >= 0) {
@@ -64,9 +64,10 @@ public class N17144 {
     static class Pair {
         int i; 
         int j;
-
+        
         public Pair(int i, int j) {
-            this.i = i; this.j = j;
+            this.i = i; 
+            this.j = j;
         }
     }
 
@@ -78,16 +79,6 @@ public class N17144 {
             this.dust = dust;
             this.idx = idx;
         }
-    }
-
-    public static void print(int[][] room) {
-        for (int i = 0; i < room.length; i++) {
-            for (int j = 0; j < room[0].length; j++) {
-                System.out.printf("%d ", room[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 
     public static int getAmountOfDust(int[][] room) {
